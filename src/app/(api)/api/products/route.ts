@@ -10,13 +10,11 @@ export async function GET(request: NextRequest) {
     const url = new URL(request.url);
     const queryLike = url.searchParams.get("like");
     //
-    const products = queryLike
+    const products = prismaUtils.hasQuery(queryLike)
       ? await prismaClient.product.findMany(
-          ProductService.searchProductNameOrBrandName(queryLike)
+          ProductService.getProductNameOrBrandNameLike(queryLike!)
         )
-      : await prismaClient.product.findMany(
-          ProductService.getProductsAndBrand()
-        );
+      : await prismaClient.product.findMany(ProductService.getAll_Brand());
     //
     return prismaUtils.response(products);
   } catch (error) {
@@ -42,7 +40,7 @@ export async function POST(request: NextRequest) {
     const validated = productCreateDto.parse(body);
     //
     const product = await prismaClient.product.create({
-      data: { ...body, uuid: prismaUtils.getUuid() },
+      data: { ...body, ...ProductService.createWithUuid() },
     });
     //
     return prismaUtils.response(product, 201);

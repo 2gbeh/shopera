@@ -1,3 +1,4 @@
+// npx prisma migrate dev --name init
 import { Prisma, PrismaClient } from "@prisma/client";
 export { Prisma } from "@prisma/client";
 export * as prismaUtils from "./prismaUtils";
@@ -23,3 +24,4 @@ export interface IZodError {
   issues: TCollection;
   name: "ZodError";
 }
+
