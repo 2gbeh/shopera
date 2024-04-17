@@ -18,7 +18,7 @@ export const $ = (n: T, usd = false) =>
   n
     ? usd
       ? Number(
-          ((n as number) / 1000).toString().replaceAll(",", ""),
+          ((n as number) / 1000).toString().replaceAll(",", "")
         ).toLocaleString()
       : Number(n.toString().replaceAll(",", "")).toLocaleString()
     : 0;
@@ -26,6 +26,9 @@ export const $ = (n: T, usd = false) =>
 // react html parser or rich-text escape string
 export const __ = (x: string, esc = false) =>
   x ? (esc ? x.replaceAll(/(<([^>]+)>)/gi, "") : parse(x)) : "";
+
+export const f = (str: string, substr: T) =>
+  str.replaceAll("%s", substr as string);
 
 export const cn = (...classes: string[]) => classes.filter(Boolean).join(" ");
 export const cx = (...classes: string[]) => classes.filter(Boolean).join(" ");
@@ -68,7 +71,7 @@ export const pad = (str: T, x = 3, y = "0") =>
 // await zzz() - mock api request delay
 export const zzz = (secs = 3, success = true) =>
   new Promise((resolve) =>
-    setTimeout(() => resolve({ status: success ? 200 : 400 }), secs * 1000),
+    setTimeout(() => resolve({ status: success ? 200 : 400 }), secs * 1000)
   );
 
 // text transform uppercase

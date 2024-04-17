@@ -6,8 +6,8 @@ export class ProductService {
     include: { brand: true },
   });
 
-  static getById_Brand = (productId: number) => ({
-    where: { id: Number(productId), deleted_at: null },
+  static getById_Brand = (product_id: number) => ({
+    where: { id: Number(product_id), deleted_at: null },
     include: { brand: true },
   });
 

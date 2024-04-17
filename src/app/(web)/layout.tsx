@@ -1,27 +1,16 @@
-import "./globals.css";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import APP from "@/constants/APP";
+import React from "react";
 
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  adjustFontFallback: false,
-});
-
-export const metadata: Metadata = {
-  title: { default: APP.name, template: APP.title },
-  description: APP.description,
-};
-
-export default function RootLayout({
+export default function WebLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <React.Fragment>
+      <div className="flex items-center justify-center flex-col gap-2 h-screen">
+        <header>WebLayout</header>
+        {children}
+      </div>
+    </React.Fragment>
   );
 }
