@@ -7,8 +7,14 @@ export const getUuid = () => uuidv4();
 
 export const getDatetime = () => new Date().toJSON();
 
+export const getTimestamp = () => new Date();
+
+export const hasQuery = (query: unknown) =>
+  query && query.toString().trim().length > 0;
+
 export function response(result: unknown, status = 200) {
   const isSuccess = status < 400;
+  let error = "";
 
   // ZodError
   if ((result as IZodError).name === "ZodError") {
@@ -16,7 +22,8 @@ export function response(result: unknown, status = 200) {
     (result as IZodError).issues.map(({ message }) =>
       messages.push(message as string)
     );
-    return response("ZodError: " + messages.join("; "), status);
+    error = messages.join("; ");
+    return response(`ZodError: ${error}`, 422);
   }
 
   // PrismaClientError
@@ -27,7 +34,9 @@ export function response(result: unknown, status = 200) {
     result instanceof Prisma.PrismaClientInitializationError ||
     result instanceof Prisma.PrismaClientValidationError
   ) {
-    return response("PrismaClientError: " + result.message, status);
+    error = result.message.replace(/\r?\n|\r/g, "");
+    error = error.split("invocation:")?.[1];
+    return response(`PrismaClientError: ${error}`, 422);
   }
 
   //

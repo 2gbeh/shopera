@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const productSchema = {
+export const productCreateDto = z.object({
   thumbnail: z.string().url().optional(),
   name: z
     .string({
@@ -28,14 +28,6 @@ const productSchema = {
       invalid_type_error: "Brand ID must be numeric",
     })
     .positive("Brand ID can't be less than 1"),
-};
-
-export const productCreateDto = z.object(productSchema);
+});
 
 export const productUpdateDto = productCreateDto.partial();
-
-export const productReadDto = z.object({
-  name: productSchema.name.optional(),
-  barcode: productSchema.barcode.optional(),
-  brand_id: productSchema.name.optional(),
-});
