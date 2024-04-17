@@ -1,7 +1,8 @@
 import { type NextRequest } from "next/server";
 import prismaClient, { prismaUtils } from "@/lib/prisma/prismaClient";
-import { productUpdateDto } from "../_products/product.dto";
-import { ProductService } from "../_products/product.service";
+import { CommonService } from "@/server/services/common.service";
+import { ProductService } from "@/server/services/product.service";
+import { productUpdateDto } from "@/server/requests/product.dto";
 
 interface IContext {
   params: {
@@ -14,11 +15,11 @@ export async function GET(_: NextRequest, context: IContext) {
   try {
     const { productId } = context.params;
     //
-    const product = await prismaClient.product.findUnique(
+    const document = await prismaClient.product.findUnique(
       ProductService.getById_Brand(productId)
     );
     //
-    return prismaUtils.response(product);
+    return prismaUtils.response(document);
   } catch (error) {
     // console.log("🚀 ~ GET ~ error:", error);
     return prismaUtils.response(error, 404);
@@ -37,11 +38,11 @@ export async function PATCH(request: NextRequest, context: IContext) {
     const body = await request.json();
     const validated = productUpdateDto.parse(body);
     //
-    const product = await prismaClient.product.update(
-      ProductService.updateProduct(productId, body)
+    const document = await prismaClient.product.update(
+      CommonService.update(productId, body)
     );
     //
-    return prismaUtils.response(product);
+    return prismaUtils.response(document);
   } catch (error) {
     // console.log("🚀 ~ PATCH ~ error:", error);
     return prismaUtils.response(error, 404);
@@ -61,11 +62,11 @@ export async function DELETE(request: NextRequest, context: IContext) {
     const url = new URL(request.url);
     const queryUndo = url.searchParams.get("undo");
     //
-    const product = prismaUtils.hasQuery(queryUndo)
-      ? await prismaClient.product.updateMany(ProductService.restore(productId))
-      : await prismaClient.product.updateMany(ProductService.trash(productId));
+    const document = prismaUtils.hasQuery(queryUndo)
+      ? await prismaClient.product.update(CommonService.restore(productId))
+      : await prismaClient.product.update(CommonService.trash(productId));
     //
-    return prismaUtils.response(product);
+    return prismaUtils.response(document);
   } catch (error) {
     // console.log("🚀 ~ DELETE ~ error:", error);
     return prismaUtils.response(error, 404);

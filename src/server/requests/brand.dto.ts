@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const brandSchema = {
+export const brandCreateDto = z.object({
   logo: z.string().url().optional(),
   name: z
     .string({
@@ -10,12 +10,6 @@ const brandSchema = {
     .trim()
     .min(3, "Brand Name must contain at least 3 char(s)"),
   website: z.string().url().optional(),
-};
-
-export const brandCreateDto = z.object(brandSchema);
+});
 
 export const brandUpdateDto = brandCreateDto.partial();
-
-export const brandReadDto = z.object({
-  name: brandSchema.name.optional(),
-});
