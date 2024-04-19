@@ -1,3 +1,5 @@
+import { FormButton } from "../form/form-button";
+
 export const EditProductButtons = () => {
   return (
     <section className="mt-6 flex items-center justify-end gap-8 border-t pt-5  px-5">
@@ -7,12 +9,7 @@ export const EditProductButtons = () => {
       >
         Cancel
       </button>
-      <button
-        type="submit"
-        className="rounded-md btn-brand px-5 py-2 text-sm font-semibold shadow-sm"
-      >
-        Save
-      </button>
+      <FormButton text="Save" />
     </section>
   );
 };
