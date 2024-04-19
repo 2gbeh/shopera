@@ -8,7 +8,7 @@ export const SearchBarPlaceholder = ({
   handleClick: () => void;
 }) => {
   return (
-    <ul className="flex-center flex-1 pl-10 text-sm border_ gap-16">
+    <ul className="flex-center flex-1 pl-10 text-md border_ gap-16">
       {["product name", "brand", "barcode"].map((e, i) => (
         <li
           key={i}

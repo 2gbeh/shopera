@@ -1,7 +1,10 @@
+import { Package } from "lucide-react";
+import { Icon } from "../icon";
 import { TDocument } from "@/types/common.type";
-import { $ } from "@/utils";
+import PATH from "@/constants/PATH";
+import { $, f } from "@/utils";
 import fakeBrands from "@/data/fake-brands";
-
+//
 import { ProductCardImage } from "./product-card-image";
 import { ProductCardBarcode } from "./product-card-barcode";
 
@@ -20,12 +23,18 @@ export const ProductCard = ({
   return (
     <li className="shadow-md hover:shadow-xl transition min-w-[310px] max-w-[310px] max-h-[410px] min-h-[410px] bg-white rounded-xl flex flex-col">
       {/*  */}
-      <ProductCardImage image={item?.thumbnail as string} editable />
+      <ProductCardImage
+        src={item?.thumbnail as string}
+        href={f(PATH.edit_product, item?.id as string)}
+      />
       {/*  */}
       <article className="py-2.5 px-5 flex-col-between flex-1">
         <hgroup>
           <b className="text-sm text-accent font-normal_">
-            # {getBrandName(item?.brand_id as number, true)}
+            <Icon
+              as={<Package />}
+              text={getBrandName(item?.brand_id as number, true)}
+            />
           </b>
           <h1 className="py-1 truncate_">
             {item?.name + " - " + getBrandName(item.brand_id as number)}

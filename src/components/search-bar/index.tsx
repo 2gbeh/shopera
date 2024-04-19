@@ -1,7 +1,6 @@
 "use client";
 
 import { MouseEvent, useState } from "react";
-import clsx from "clsx";
 import { SearchBarPlaceholder } from "./search-bar-placeholder";
 import { SearchBarButton } from "./search-bar-button";
 import { zzz } from "@/utils";
@@ -21,7 +20,7 @@ export const SearchBar = () => {
   }
   //
   return (
-    <form className="shadow-lg shadow-black bg-white border-2 border-brand w-[960px] rounded-full min-h-[80px] max-h-[80px] flex-col-center">
+    <form className="shadow-lg shadow-black bg-white border border-brand w-[960px] rounded-full min-h-[80px] max-h-[80px] flex-col-center">
       <fieldset disabled={submitting} className="flex-center-between">
         {showInput ? (
           <input

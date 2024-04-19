@@ -1,6 +1,7 @@
 // import APP from "@/constants/APP";
 export default Object.freeze({
   url: "https://shopera.vercel.app",
+  path: "https://github.com/2gbeh/shopera",
   name: "Shopera",
   slug: "shopera",
   typeface: "$hopera",
