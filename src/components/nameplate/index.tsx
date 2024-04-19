@@ -2,11 +2,11 @@
 
 import clsx from "clsx";
 import { Globe } from "lucide-react";
-
-// MUST BE CLIENT
-const hasInternet = window?.navigator?.onLine;
+import { ImageFallback } from "../image-fallback";
+import useHasInternet from "@/hooks/useHasInternet";
 
 export const Nameplate = () => {
+const hasInternet = useHasInternet();
   return (
     <section className="flex-center-end gap-5">
       <b className="text-sm tracking-wider whitespace-nowrap">Hi, Emmanuel</b>
@@ -17,12 +17,11 @@ export const Nameplate = () => {
         </i>
         <a href="https://github.com/2gbeh" target="_blank">
           <div className="relative">
-            <img
-              src={
-                hasInternet
-                  ? "https://github.com/2gbeh.png"
-                  : "/images/avatar-flat.png"
-              }
+            <ImageFallback
+              as={[
+                "https://github.com/2gbeh.png",
+                "/images/avatar-flat.png",
+              ]}
               alt="Account"
               title="My Account"
               className="min-w-10 min-h-10 max-w-10 max-h-10 rounded-full"

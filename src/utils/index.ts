@@ -10,9 +10,6 @@ export const NAIRA = "₦";
 // dollar sign
 export const DOLLAR = "$";
 
-// check internet status
-// export const LIVE = window?.navigator?.onLine;
-
 // number format
 export const $ = (n: T, usd = false) =>
   n
