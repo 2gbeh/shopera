@@ -27,4 +27,8 @@
     background-attachment: scroll;
     background-size: cover;
   }
+
+  .tent {
+    @apply flex items-center justify-center flex-col gap-2 h-screen
+  }
 }

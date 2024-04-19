@@ -3,6 +3,7 @@ export default Object.freeze({
   url: "https://shopera.vercel.app",
   name: "Shopera",
   slug: "shopera",
+  typeface: "$hopera",
   title: "%s | Shopera",
   summary: "Peddle Technologies - Full-Stack Developer Assessment",
   description: "Peddle Technologies - Full-Stack Developer Assessment",
@@ -11,4 +12,4 @@ export default Object.freeze({
   build: "WE20240417T010000",
 });
 
-export const COLOR = Object.freeze({ main: "#2370f9", accent: "#0f326c" });
+export const COLOR = Object.freeze({ brand: "#2370f9", accent: "#0f326c" });

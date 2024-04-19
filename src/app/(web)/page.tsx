@@ -1,15 +1,23 @@
-import Link from "next/link";
-import PATH from "@/constants/PATH";
-import { f } from "@/utils";
+import { ProductCard } from "@/components/product-card";
+import { Pagination } from "@/components/pagination";
+import { Fab } from "@/components/fab";
+// 
+import fakeProducts from "@/data/fake-products";
 
 export const metadata = { title: "All Products" };
 
 export default function Home() {
   return (
-    <main>
-      <Link href={f(PATH.edit_product, "0fd2652c-fb03-4be4-8e80-819a856ef95a")}>
-        Edit
-      </Link>
+    <main className="bg-gray-100_ p-10">
+      <ul className="flex-center-center flex-wrap gap-10">
+        {fakeProducts.map(
+          (e, i) => i < 8 && <ProductCard key={i} index={i} item={e} />
+        )}
+      </ul>
+      {/*  */}
+      <Pagination />
+      {/*  */}
+      <Fab />
     </main>
   );
 }

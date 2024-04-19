@@ -5,5 +5,5 @@ export default function EditProduct({
 }: {
   params: { product_id: string };
 }) {
-  return <main>{params.product_id}</main>;
+  return <main className="tent-half">{params.product_id}</main>;
 }
