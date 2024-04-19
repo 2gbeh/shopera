@@ -1,10 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import { Pencil } from "lucide-react";
-
-// MUST BE CLIENT 
-const hasInternet = window?.navigator?.onLine;
+import { ImageFallback } from "../image-fallback";
 
 export const ProductCardImage = ({
   src,
@@ -15,8 +11,8 @@ export const ProductCardImage = ({
 }) => {
   return (
     <figure className="bg-gray-100 relative min-h-[230px] max-h-[230px] border overflow-hidden">
-      <img
-        src={hasInternet && src ? src : "/images/image-wide.png"}
+      <ImageFallback
+        as={[src, "/images/image-wide.png"]}
         width="100%"
         className="min-h-[230px] max-h-[230px] object-cover"
         alt=""
