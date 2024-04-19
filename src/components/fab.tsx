@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { ChevronUp } from "lucide-react";
 
 export const Fab = () => {
   const router = useRouter();
@@ -10,7 +11,9 @@ export const Fab = () => {
   //
   return (
     <section className="fab btn-brand" onClick={handleScroll}>
-      <button type="button">#</button>
+      <button type="button">
+        <ChevronUp strokeWidth={3} />
+      </button>
     </section>
   );
 };

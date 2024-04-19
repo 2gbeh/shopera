@@ -1,75 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "@/styles/__base.css";
+
+@import "tailwindcss/components";
+@import "@/styles/__components.css";
+
+@import "tailwindcss/utilities";
+@import "@/styles/__utilities.css";
 
 /* https://hexcolorpedia.com/color/?q=2370f9 */
 
-@layer base {
-  * {
-    box-sizing: border-box;
-  }
-
-  body {
-    scroll-behavior: smooth;
-  }
-
-  input,
-  select,
-  textarea,
-  button {
-    outline: none;
-    -webkit-transition: all 0.2s;
-    transition: all 0.2s;
-  }
-
-  i,
-  em {
-    font-style: normal;
-  }
-}
-
-@layer components {
-  .container {
-    @apply w-full sm:w-[90%] mx-auto
-  }
-
-  .tent {
-    @apply flex items-center justify-center flex-col gap-2 h-screen
-  }
-
-  .tent-half {
-    @apply flex items-center justify-center flex-col gap-2 h-96
-  }
-
-  .typeface {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-  }
-
-  .fab {
-    color: #fff;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 100%;
-    width: 60px;
-    height: 60px;
-    font-size: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 7;
-    -webkit-transition: none;
-    transition: none;
-    cursor: pointer;
-
-    &:active {
-      width: 59px;
-      height: 59px;
-    }
-  }
-
-}
 
 @layer utilities {
   .text-brand {
@@ -120,6 +59,10 @@
     @apply bg-[#f9ac23] text-[#0f326c] hover:bg-[#2370f9] hover:text-white
   }
 
+  .btn-accent-white {
+    @apply bg-[#f9ac23] text-[#fff] hover:bg-[#2370f9]
+  }
+
   .border-brand {
     @apply border-[#2370f9]
   }
@@ -132,51 +75,19 @@
     @apply border-[#f9ac23]
   }
 
-  .text500 {
+  .text-500 {
     @apply text-gray-500
   }
 
-  .text600 {
+  .text-600 {
     @apply text-gray-600
   }
 
-  .border400 {
+  .border-300 {
+    @apply border-gray-300
+  }
+
+  .border-400 {
     @apply border-gray-400
-  }
-
-  .flex-center {
-    @apply flex items-center
-  }
-
-  .flex-end {
-    @apply flex justify-end
-  }
-
-  .flex-center-center {
-    @apply flex items-center justify-center
-  }
-
-  .flex-center-end {
-    @apply flex items-center justify-end
-  }
-
-  .flex-start-between {
-    @apply flex items-start justify-between
-  }
-
-  .flex-center-between {
-    @apply flex items-center justify-between
-  }
-
-  .flex-col-center {
-    @apply flex flex-col justify-center
-  }
-
-  .flex-col-between {
-    @apply flex flex-col justify-between
-  }
-
-  .text-balance {
-    text-wrap: balance;
   }
 }

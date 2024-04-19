@@ -1,19 +1,17 @@
 @tailwind base;
 
 @layer base {
+  * {
+    box-sizing: border-box;
+  }
+
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    background-color: #fafafa;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  label {
-    cursor: pointer;
   }
 
   input,
@@ -25,11 +23,8 @@
     transition: all 0.2s;
   }
 
-  mark {
-    @apply bg-brand_tint text-brand px-1
-  }
-
-  i {
+  i,
+  em {
     font-style: normal;
   }
 }

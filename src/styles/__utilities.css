@@ -1,34 +1,35 @@
 @tailwind utilities;
 
 @layer utilities {
-  .root-container {
-    @apply w-full sm:w-[480px] mx-auto border-0
+  .flex-center {
+    @apply flex items-center
   }
 
-  .root-wrapper {
-    @apply w-full sm:w-[480px]
+  .flex-end {
+    @apply flex justify-end
   }
 
-  .root-wrapper-center {
-    @apply w-full sm:w-[480px] mx-auto
+  .flex-center-center {
+    @apply flex items-center justify-center
   }
 
-  .bg-gradient {
-    @apply bg-gradient-to-r from-brand to-brand_dark
+  .flex-center-end {
+    @apply flex items-center justify-end
   }
 
-  .bg-gradient-alt {
-    @apply bg-gradient-to-r from-fuchsia-600 to-brand
+  .flex-start-between {
+    @apply flex items-start justify-between
   }
 
-  .backdrop {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: scroll;
-    background-size: cover;
+  .flex-center-between {
+    @apply flex items-center justify-between
   }
 
-  .tent {
-    @apply flex items-center justify-center flex-col gap-2 h-screen
+  .flex-col-center {
+    @apply flex flex-col justify-center
+  }
+
+  .flex-col-between {
+    @apply flex flex-col justify-between
   }
 }
