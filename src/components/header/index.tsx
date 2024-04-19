@@ -5,9 +5,9 @@ import { Nameplate } from "@/components/nameplate";
 
 export const Header = () => {
   return (
-    <header className="pt-5 pb-16 bg-brand-dark border-b-2 border-b-black">
-      <div className="container flex-start-between border">
-        <div className="min-w-[260px] border">
+    <header className="pt-5 pb-16 bg-brand-dark border-b-2 border-b-gray-400">
+      <div className="container flex-start-between border_">
+        <div className="min-w-[260px] border_">
           <Logo />
         </div>
         {/*  */}
@@ -17,7 +17,7 @@ export const Header = () => {
           <SearchBar />
         </div>
         {/*  */}
-        <div className="min-w-[260px] border">
+        <div className="min-w-[260px] border_">
           <Nameplate />
         </div>
       </div>

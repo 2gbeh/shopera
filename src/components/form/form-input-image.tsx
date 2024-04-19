@@ -13,7 +13,7 @@ export const FormInputImage = ({
     <div className="col-span-full">
       <FormLabel self={{ label, name }} />
       {/*  */}
-      <div className="bg-white mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+      <div className="bg-white mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-6">
         <div className="text-center">
           <PhotoIcon
             className="mx-auto h-12 w-12 text-gray-300"

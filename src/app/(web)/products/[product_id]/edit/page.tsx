@@ -22,19 +22,24 @@ export default function EditProduct({
         {/*  */}
         <FormInputImage label="Upload Thumbnail" name="thumbnail" />
         {/*  */}
-        <FormInput label="Select Brand*" type="select" name="brand_id" options={fakeBrands} />
+        <FormInput
+          label="Select Brand*"
+          type="select"
+          name="brand_id"
+          options={fakeBrands}
+        />
         {/*  */}
-        <FormInput label="Enter Product Name*" name="name" />
+        <FormInput label="Product Name*" name="name" />
         {/*  */}
         <FormInput
-          label="Enter Price"
+          label="Product Price"
           type="number"
           name="price"
           defaultValue="0.00"
         />
         {/*  */}
         <FormInput
-          label="Enter Barcode*"
+          label="Product Barcode*"
           prefix="UPC-12"
           type="number"
           name="barcode"
