@@ -16,6 +16,8 @@ $ git clone https://github.com/2gbeh/shopera.git
 
 $ cd shopera
 
+$ npm cache clean --force
+
 $ npm install
 
 $ npm run dev
