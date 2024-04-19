@@ -5,7 +5,7 @@ export const FilterBar = () => {
   function handleSortBrand() {}
   //
   return (
-    <section className="flex-end bg-blue-50 px-10 py-5 border-b">
+    <section className="flex-end bg-brand-tint px-10 py-5 border-b">
       <ul className="flex-center gap-10 text-sm">
         <li>
           <button onClick={handleSortProduct}>

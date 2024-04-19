@@ -1,5 +1,7 @@
 import { ProductCard } from "@/components/product-card";
 import { Pagination } from "@/components/pagination";
+import { Fab } from "@/components/fab";
+// 
 import fakeProducts from "@/data/fake-products";
 
 export const metadata = { title: "All Products" };
@@ -14,6 +16,8 @@ export default function Home() {
       </ul>
       {/*  */}
       <Pagination />
+      {/*  */}
+      <Fab />
     </main>
   );
 }

@@ -44,6 +44,31 @@
   .typeface {
     font-family: Georgia, 'Times New Roman', Times, serif;
   }
+
+  .fab {
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 7;
+    -webkit-transition: none;
+    transition: none;
+    cursor: pointer;
+
+    &:active {
+      width: 59px;
+      height: 59px;
+    }
+  }
+
 }
 
 @layer utilities {
@@ -63,12 +88,24 @@
     @apply bg-[#2370f9] text-white
   }
 
+  .bg-brand-tint {
+    @apply bg-[#e9f1fe]
+  }
+
   .bg-brand-dark {
     @apply bg-[#0f326c] text-white
   }
 
+  .bg-brand-dark-tint {
+    @apply bg-[#e7ebf0]
+  }
+
   .bg-accent {
     @apply bg-[#f9ac23] text-[#0f326c]
+  }
+
+  .bg-accent-tint {
+    @apply bg-[#fef7e9]
   }
 
   .btn-brand {
