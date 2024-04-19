@@ -20,7 +20,7 @@ export const SearchBar = () => {
   }
   //
   return (
-    <form className="shadow-lg shadow-black bg-white border border-brand w-[960px] rounded-full min-h-[80px] max-h-[80px] flex-col-center">
+    <form className="shadow-lg shadow-black bg-white border border-brand w-full rounded-full min-h-[80px] max-h-[80px] flex-col-center">
       <fieldset disabled={submitting} className="flex-center-between">
         {showInput ? (
           <input
@@ -28,7 +28,13 @@ export const SearchBar = () => {
             id="search"
             name="search"
             placeholder="Search ( / )"
-            className="ml-8 flex-1 border_ bg-transparent text600"
+            className="ml-8 flex-1 border_ bg-transparent text-600"
+            style={{
+              outline: "none",
+              outlineColor: "#fff",
+              border: "none",
+              borderColor: "#fff",
+            }}
             onMouseLeave={resetShowInput}
             autoFocus
             required

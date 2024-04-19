@@ -12,7 +12,7 @@ export const SearchBarPlaceholder = ({
       {["product name", "brand", "barcode"].map((e, i) => (
         <li
           key={i}
-          className={clsx("text500", i > 0 && "border-l pl-10")}
+          className={clsx("text-500 whitespace-nowrap", i > 0 && "border-l pl-10")}
           onClick={handleClick}
         >
           Search by {e}
