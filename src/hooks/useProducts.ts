@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import { zzz } from "@/utils";
-import { TProductEntity_withBrand } from "@/server/entities/product.entity";
+import { iMatch, zzz } from "@/utils";
+import {
+  TProductResponse,
+  TProductEntity_withBrand,
+} from "@/server/entities/product.entity";
 //
 import M from "@/constants/MOCK";
 import mockProducts from "@/data/mock-products";
@@ -11,34 +14,63 @@ export default function useProducts() {
   const router = useRouter();
   // const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [products, setProducts] = useState<TProductEntity_withBrand[] | null>(
-    null
-  );
+  const [perPage, setPerPage] = useState(10);
+  const [sortProductDesc, setSortProductDesc] = useState(false);
+  const [sortBrandDesc, setSortBrandDesc] = useState(false);
+  const [products, setProducts] = useState<TProductResponse[] | null>(null);
   const resetSearchResults = () => router.push(PATH.home);
   //
   async function searchProductsOrBrands(like: string) {
-    let raw = await fetch("/api/products?like=" + like);
-    let res = await raw.json();
+    if (M.products) {
+      await zzz();
+      let raw = mockProducts.data;
+      let res = raw.filter(
+        (e) => iMatch(e.name, like) || iMatch(e.brand.name, like)
+      );
+      // @ts-ignore
+      setProducts(res);
+    } else {
+      let raw = await fetch("/api/products?like=" + like);
+      let res = await raw.json();
+      setProducts(res.success ? res.data : []);
+    }
+  }
+  // https://www.scaler.com/topics/javascript-sort-an-array-of-objects/
+  function sortByProductName() {
+    setSortProductDesc((prev) => !prev);
+    let res = sortProductDesc
+      ? products?.toSorted((objX, objY) =>
+          objX.name < objY.name ? 1 : objX.name > objY.name ? -1 : 0
+        )
+      : products?.toSorted((objX, objY) =>
+          objX.name > objY.name ? 1 : objX.name < objY.name ? -1 : 0
+        );
     //
-    setProducts(res.success ? res.data : []);
+    if (res) setProducts(res);
+  }
+  function sortByBrandName() {
+    setSortBrandDesc((prev) => !prev);
+    let res = sortBrandDesc
+      ? products?.toSorted((objX, objY) =>
+          objX.brand.name < objY.brand.name
+            ? 1
+            : objX.brand.name > objY.brand.name
+              ? -1
+              : 0
+        )
+      : products?.toSorted((objX, objY) =>
+          objX.brand.name > objY.brand.name
+            ? 1
+            : objX.brand.name < objY.brand.name
+              ? -1
+              : 0
+        );
+    //
+    if (res) setProducts(res);
   }
   async function mockOnMount() {
     await zzz();
-    let raw = mockProducts.data;
-    let res = raw.map((e) => {
-      return {
-        ...e,
-        brand: {
-          ...e.brand,
-          created_at: new Date(e.created_at),
-          updated_at: new Date(e.updated_at),
-        },
-        created_at: new Date(e.created_at),
-        updated_at: new Date(e.updated_at),
-      };
-    });
-    //
-    setProducts(res);
+    setProducts(mockProducts.data);
   }
   async function onMount() {
     let raw = await fetch("/api/products");
@@ -56,5 +88,15 @@ export default function useProducts() {
     }
   }, []);
 
-  return { products, resetSearchResults };
+  return {
+    perPage,
+    setPerPage,
+    //
+    products,
+    resetSearchResults,
+    sortByProductName,
+    sortByBrandName,
+    sortProductDesc,
+    sortBrandDesc,
+  };
 }

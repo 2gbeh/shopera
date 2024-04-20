@@ -3,8 +3,11 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { zzz } from "@/utils";
-import { TProductEntity_withBrand } from "@/server/entities/product.entity";
-import { TBrandEntity } from "@/server/entities/brand.entity";
+import {
+  TProductEntity_withBrand,
+  TProductResponse,
+} from "@/server/entities/product.entity";
+import { TBrandEntity, TBrandResponse } from "@/server/entities/brand.entity";
 import {
   TProductFormData,
   productFormDataDto,
@@ -35,8 +38,8 @@ export default function useEditProduct<T>(
   });
   const [formActive, setFormActive] = useState(false);
   const [formErrorBag, setFormErrorBag] = useState<string | null>(null);
-  const [brands, setBrands] = useState<TBrandEntity[] | null>(null);
-  const [product, setProduct] = useState<TProductEntity_withBrand | null>(null);
+  const [brands, setBrands] = useState<TBrandResponse[] | null>(null);
+  const [product, setProduct] = useState<TProductResponse | null>(null);
   const brandsPipe = useMemo(() => {
     if (brands && brands.length > 0) {
       return brands.map(({ id, name }) => ({
@@ -87,32 +90,8 @@ export default function useEditProduct<T>(
   }
   async function mockOnMount() {
     await zzz();
-    //
-    {
-      let raw = mockBrands.data;
-      let res = raw.map((e) => {
-        return {
-          ...e,
-          created_at: new Date(e.created_at),
-          updated_at: new Date(e.updated_at),
-        };
-      });
-      setBrands(res);
-    }
-    {
-      let raw = mockProducts.data[0];
-      let res = {
-        ...raw,
-        brand: {
-          ...raw.brand,
-          created_at: new Date(raw.created_at),
-          updated_at: new Date(raw.updated_at),
-        },
-        created_at: new Date(raw.created_at),
-        updated_at: new Date(raw.updated_at),
-      };
-      setProduct(res);
-    }
+    setBrands(mockBrands.data);
+    setProduct(mockProducts.data[0]);
   }
   async function onMount() {
     let [brandsResponse, productResponse] = await Promise.all([
