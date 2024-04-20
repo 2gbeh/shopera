@@ -15,7 +15,7 @@ export const FilterBar = ({
 }) => {
   //
   return (
-    <section className="flex-end px-8 pt-8">
+    <section className="flex-end px-8 pt-5 sm:pt-8">
       <ul className="flex-center gap-5 text-sm">
         <li className="border border-300 pt-2 pb-1 px-3 rounded-lg text-brand-dark">
           <button onClick={sortByProductName} className="hover:text-brand">

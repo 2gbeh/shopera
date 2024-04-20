@@ -37,8 +37,8 @@ const ProductsContent = () => {
         }}
       />
       {/*  */}
-      <section className="bg-gray-100_ p-10">
-        <ul className="flex-center-center flex-wrap gap-10">
+      <section className="bg-gray-100_ p-5 sm:p-10">
+        <ul className="flex-center-center flex-wrap gap-8 sm:gap-10">
           {products ? (
             products.length > 0 ? (
               products.map(
@@ -46,7 +46,7 @@ const ProductsContent = () => {
                   i < perPage && (
                     <li
                       key={i}
-                      className="shadow-md hover:shadow-xl transition min-w-[310px] max-w-[310px] max-h-[410px] min-h-[410px] bg-white rounded-xl flex flex-col"
+                      className="shadow-md hover:shadow-xl transition w-[100%]  px-2 sm:px-0 sm:w-[310px] sm:min-w-[310px] sm:max-w-[310px] max-h-[410px] min-h-[410px] bg-white rounded-xl flex flex-col"
                     >
                       {/*  */}
                       <ProductCardImage

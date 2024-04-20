@@ -25,8 +25,37 @@ $ npm run dev
 
 ## Usage
 
-> Local:   http://localhost:3000/
+#### Development
+
+Web: http://localhost:3000/ 
+
+API: http://localhost:3000/api/
+
+#### Production
+
+Web: http://shopera.vercel.app
+
+API: http://shopera.vercel.app/api/
+
 
 ## Documentation
 
-![Screenshot](./public/social-preview.png)
+(coming soon)
+
+## Screenshots
+
+#### Page 1 (Product Listing)
+
+![Screenshot](./public/ui/page-1.png)
+
+#### Page 2 (Edit Product Listing)
+
+![Screenshot](./public/ui/page-2.png)
+
+#### Page 1 - Mobile (Product Listing)
+
+![Screenshot](./public/ui/page-1-mobile.png)
+
+#### Page 2 - Mobile (Edit Product Listing)
+
+![Screenshot](./public/ui/page-2-mobile.png)

@@ -3,6 +3,10 @@ import { Prisma, type TDocument, prismaUtils } from "@/lib/prisma/prismaClient";
 export class ProductService {
   static getAll_Brand = () => ({
     where: { deleted_at: null },
+    orderBy: {
+      name: Prisma.SortOrder.asc,
+    },
+
     include: { brand: true },
   });
 
@@ -21,12 +25,21 @@ export class ProductService {
           },
         },
         {
+          barcode: {
+            contains: queryLike,
+            mode: Prisma.QueryMode.insensitive,
+          },
+        },
+        {
           brand: {
             name: { contains: queryLike, mode: Prisma.QueryMode.insensitive },
           },
         },
       ],
       deleted_at: null,
+    },
+    orderBy: {
+      name: Prisma.SortOrder.asc,
     },
     include: { brand: true },
   });
