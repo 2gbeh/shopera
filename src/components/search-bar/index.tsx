@@ -1,29 +1,30 @@
 "use client";
 
-import { MouseEvent, useState } from "react";
+import { Search } from "lucide-react";
 import { SearchBarPlaceholder } from "./search-bar-placeholder";
-import { SearchBarButton } from "./search-bar-button";
-import { zzz } from "@/utils";
+import { useSearchBar } from "@/hooks/useSearchBar";
 
 export const SearchBar = () => {
-  const [showInput, setShowInput] = useState(false);
-  const [submitting, setSubmitting] = useState(false);
-  const toggleShowInput = () => setShowInput((prev) => !prev);
-  async function resetShowInput(ev: MouseEvent<HTMLInputElement>) {
-    if (ev.currentTarget.value.trim().length < 1) {
-      await zzz(1);
-      toggleShowInput();
-    }
-  }
-  async function handleSubmit() {
-    toggleShowInput();
-  }
+  const {
+    inputRef,
+    showInput,
+    setShowInput,
+    submitting,
+    setSubmitting,
+    toggleShowInput,
+    resetShowInput,
+    handleSubmit,
+  } = useSearchBar();
   //
   return (
-    <form className="shadow-lg shadow-black bg-white border border-brand w-full rounded-full min-h-[80px] max-h-[80px] flex-col-center">
+    <form
+      onSubmit={handleSubmit}
+      className="shadow-lg shadow-black bg-white border border-brand w-full rounded-full min-h-[80px] max-h-[80px] flex-col-center"
+    >
       <fieldset disabled={submitting} className="flex-center-between">
         {showInput ? (
           <input
+            ref={inputRef}
             type="search"
             id="search"
             name="search"
@@ -43,7 +44,12 @@ export const SearchBar = () => {
           <SearchBarPlaceholder handleClick={toggleShowInput} />
         )}
         {/*  */}
-        <SearchBarButton handleSubmit={handleSubmit} />
+        <button
+          className="btn-accent-white flex-center-center w-[60px] h-[60px] rounded-full ml-5  mr-2.5"
+          title="Search"
+        >
+          <Search strokeWidth={3} />
+        </button>
       </fieldset>
     </form>
   );

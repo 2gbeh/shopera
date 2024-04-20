@@ -1,32 +1,31 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Buffer } from "../loaders/buffer";
+import { useSearchParams, useRouter } from "next/navigation";
 import { f, zzz } from "@/utils";
 import PATH from "@/constants/PATH";
+import { FormButton } from "../form/form-button";
 
 export const Pagination = () => {
+  const searchParams = useSearchParams();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   async function handleClick() {
     setLoading(true);
     await zzz();
     setLoading(false);
-    router.push(f(PATH.edit_product, "0fd2652c-fb03-4be4-8e80-819a856ef95a"));
+    // router.push(f(PATH.edit_product, "0fd2652c-fb03-4be4-8e80-819a856ef95a-1"));
   }
   //
   return (
-    <section className="flex-center-center mt-20">
-      <button
-        type="button"
-        onClick={handleClick}
-        disabled={loading}
-        className="btn-brand py-4 px-8 rounded-lg flex-center gap-2"
-      >
-        <b className="uppercase text-sm tracking-wider">Load More</b>
-        {loading && <Buffer />}
-      </button>
-    </section>
+    !searchParams.get("like") && (
+      <section className="flex-center-center my-10">
+        <FormButton
+          text="Load More"
+          handleSubmit={handleClick}
+          submitting={loading}
+        />
+      </section>
+    )
   );
 };

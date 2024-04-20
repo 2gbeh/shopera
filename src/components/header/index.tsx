@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Logo } from "@/components/logo";
 import { QuickAccessBar } from "@/components/quick-access-bar";
 import { SearchBar } from "@/components/search-bar";
@@ -14,7 +15,9 @@ export const Header = () => {
         <div className="flex-center flex-col flex-1 gap-8">
           <QuickAccessBar />
           {/*  */}
-          <SearchBar />
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <SearchBar />
+          </Suspense>
         </div>
         {/*  */}
         <div className="min-w-[260px] border_">
