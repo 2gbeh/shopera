@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { LoadingAlt } from "../loaders/loading-alt";
 import { f, zzz } from "@/utils";
 import PATH from "@/constants/PATH";
 import { FormButton } from "../form/form-button";
@@ -14,11 +13,11 @@ export const Pagination = () => {
     setLoading(true);
     await zzz();
     setLoading(false);
-    // router.push(f(PATH.edit_product, "0fd2652c-fb03-4be4-8e80-819a856ef95a"));
+    // router.push(f(PATH.edit_product, "0fd2652c-fb03-4be4-8e80-819a856ef95a-1"));
   }
   //
   return (
-    <section className="flex-center-center mt-20">
+    <section className="flex-center-center my-10">
       <FormButton text="Load More" handleSubmit={handleClick} submitting={loading} />
     </section>
   );

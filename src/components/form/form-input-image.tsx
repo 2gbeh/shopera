@@ -4,9 +4,11 @@ import { FormLabel } from "./form-label";
 export const FormInputImage = ({
   label,
   name,
+  size,
 }: {
   label?: string;
   name: string;
+  size?: number;
 }) => {
   //
   return (
@@ -36,7 +38,7 @@ export const FormInputImage = ({
             <p className="pl-1">or drag and drop</p>
           </div>
           <p className="text-xs leading-5 text-gray-600">
-            PNG, JPG, GIF up to 10MB
+            PNG, JPG, GIF up to {size || 10}MB
           </p>
         </div>
       </div>

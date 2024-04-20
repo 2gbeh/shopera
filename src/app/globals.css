@@ -63,6 +63,10 @@
     @apply bg-[#f9ac23] text-[#fff] hover:bg-[#2370f9]
   }
 
+  .btn-reset {
+    @apply text-[#e11] bg-white hover:bg-[#e11] hover:text-white
+  }
+
   .border-brand {
     @apply border-[#2370f9]
   }
