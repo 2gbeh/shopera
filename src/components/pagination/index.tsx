@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { f, zzz } from "@/utils";
 import PATH from "@/constants/PATH";
 import { FormButton } from "../form/form-button";
 
 export const Pagination = () => {
+  const searchParams = useSearchParams();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   async function handleClick() {
@@ -17,8 +18,14 @@ export const Pagination = () => {
   }
   //
   return (
-    <section className="flex-center-center my-10">
-      <FormButton text="Load More" handleSubmit={handleClick} submitting={loading} />
-    </section>
+    !searchParams.get("like") && (
+      <section className="flex-center-center my-10">
+        <FormButton
+          text="Load More"
+          handleSubmit={handleClick}
+          submitting={loading}
+        />
+      </section>
+    )
   );
 };

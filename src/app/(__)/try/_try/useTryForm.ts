@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { IFormInput, defaultValues } from "./TRY";
 import fakeBrands from "@/data/fake-brands";
-import { productFormDto } from "@/server/requests/product.dto";
+import { productFormDataDto } from "@/server/requests/product.dto";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function useTryForm() {
@@ -13,7 +13,7 @@ export default function useTryForm() {
     handleSubmit,
   } = useForm({
     defaultValues,
-    resolver: zodResolver(productFormDto),
+    resolver: zodResolver(productFormDataDto),
   });
   const selectBrandOptions = fakeBrands.map(({ id, name }) => ({
     value: id,
