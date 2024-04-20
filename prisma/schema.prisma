@@ -19,8 +19,8 @@ model Product {
   thumbnail   String?   @db.VarChar(255)
   name        String    @db.VarChar(255)
   price       Float     @default(0)
-  summary     String?   @db.VarChar(255)
-  description String?   @db.VarChar(255)
+  summary     String?   
+  description String?   
   barcode     String    @unique @db.VarChar(255)
   color       String?   @db.VarChar(255)
   weight      Float?

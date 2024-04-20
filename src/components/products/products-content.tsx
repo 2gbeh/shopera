@@ -14,47 +14,67 @@ import { $, f } from "@/utils";
 import PATH from "@/constants/PATH";
 
 const ProductsContent = () => {
-  const { products, resetSearchResults } = useProducts();
+  const {
+    perPage,
+    setPerPage,
+    //
+    products,
+    resetSearchResults,
+    sortByProductName,
+    sortByBrandName,
+    sortProductDesc,
+    sortBrandDesc,
+  } = useProducts();
   //
   return (
     <>
-      <FilterBar />
+      <FilterBar
+        self={{
+          sortByProductName,
+          sortByBrandName,
+          sortProductDesc,
+          sortBrandDesc,
+        }}
+      />
       {/*  */}
       <section className="bg-gray-100_ p-10">
         <ul className="flex-center-center flex-wrap gap-10">
           {products ? (
             products.length > 0 ? (
-              products.map((item, i) => (
-                <li
-                  key={i}
-                  className="shadow-md hover:shadow-xl transition min-w-[310px] max-w-[310px] max-h-[410px] min-h-[410px] bg-white rounded-xl flex flex-col"
-                >
-                  {/*  */}
-                  <ProductCardImage
-                    src={item?.thumbnail as string}
-                    href={f(PATH.edit_product, `${item.uuid}-${item.id}`)}
-                  />
-                  {/*  */}
-                  <article className="py-2.5 px-5 flex-col-between flex-1">
-                    <hgroup>
-                      <b className="text-sm text-accent font-normal_">
-                        <Icon as={<Package />} text={item.brand.name} />
-                      </b>
-                      <h1 className="py-1 truncate_">{item.name}</h1>
-                    </hgroup>
-                    <section className="flex-start-between mb-2">
-                      <h2
-                        className="mt-2 font-bold text-[24px] text-brand-dark"
-                        style={{ whiteSpace: "nowrap" }}
-                      >
-                        ₦ {$(item?.price)}
-                      </h2>
+              products.map(
+                (item, i) =>
+                  i < perPage && (
+                    <li
+                      key={i}
+                      className="shadow-md hover:shadow-xl transition min-w-[310px] max-w-[310px] max-h-[410px] min-h-[410px] bg-white rounded-xl flex flex-col"
+                    >
                       {/*  */}
-                      <ProductCardBarcode barcode={item.barcode} />
-                    </section>
-                  </article>
-                </li>
-              ))
+                      <ProductCardImage
+                        src={item?.thumbnail as string}
+                        href={f(PATH.edit_product, `${item.uuid}-${item.id}`)}
+                      />
+                      {/*  */}
+                      <article className="py-2.5 px-5 flex-col-between flex-1">
+                        <hgroup>
+                          <b className="text-sm text-accent font-normal_">
+                            <Icon as={<Package />} text={item.brand.name} />
+                          </b>
+                          <h1 className="py-1 truncate_">{item.name}</h1>
+                        </hgroup>
+                        <section className="flex-start-between mb-2">
+                          <h2
+                            className="mt-2 font-bold text-[24px] text-brand-dark"
+                            style={{ whiteSpace: "nowrap" }}
+                          >
+                            ₦ {$(item?.price)}
+                          </h2>
+                          {/*  */}
+                          <ProductCardBarcode barcode={item.barcode} />
+                        </section>
+                      </article>
+                    </li>
+                  )
+              )
             ) : (
               <div className="flex-center-center flex-col gap-5">
                 <img src="/images/no-content-trim.png" width={240} alt="" />
@@ -72,7 +92,13 @@ const ProductsContent = () => {
         </ul>
       </section>
       {/*  */}
-      <Pagination />
+      <Pagination
+        self={{
+          products,
+          perPage,
+          setPerPage,
+        }}
+      />
     </>
   );
 };

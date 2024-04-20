@@ -4,7 +4,7 @@ import PATH from "@/constants/PATH";
 
 export const Logo = () => {
   return (
-    <Link href={PATH.home} title="Home" className="inline-block">
+    <Link href={PATH.home} title="Home" className="inline-block" id="top">
       <figure className="flex-center">
         <img src="/logo.png" width={45} alt="" className="hidden" />
         <figcaption className="text-[26px] font-bold ml-2 typeface">
