@@ -8,8 +8,8 @@ import useHasInternet from "@/hooks/useHasInternet";
 export const Nameplate = () => {
 const hasInternet = useHasInternet();
   return (
-    <section className="flex-center-end gap-5">
-      <b className="text-sm tracking-wider whitespace-nowrap">Hi, Emmanuel</b>
+    <section className="_hidden sm:flex flex-center-end gap-5">
+      <b className="hidden sm:flex text-sm tracking-wider whitespace-nowrap">Hi, Emmanuel</b>
       {/*  */}
       <div className="flex-center  gap-4 border-2 border-400 rounded-full py-2 pl-4 pr-3">
         <i>

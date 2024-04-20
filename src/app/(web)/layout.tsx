@@ -1,5 +1,7 @@
 import React from "react";
+
 import { Header } from "@/components/header";
+import { Fab } from "@/components/fab";
 
 export default function WebLayout({
   children,
@@ -8,8 +10,9 @@ export default function WebLayout({
 }>) {
   return (
     <React.Fragment>
-      <Header />
+      <Header /> 
       {children}
+      <Fab />
     </React.Fragment>
   );
 }

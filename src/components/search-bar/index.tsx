@@ -19,7 +19,7 @@ export const SearchBar = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="shadow-lg shadow-black bg-white border border-brand w-full rounded-full min-h-[80px] max-h-[80px] flex-col-center"
+      className="hidden sm:flex shadow-lg shadow-black bg-white border border-brand w-full rounded-full min-h-[80px] max-h-[80px] flex-col-center"
     >
       <fieldset disabled={submitting} className="flex-center-between">
         {showInput ? (

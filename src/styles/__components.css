@@ -5,6 +5,10 @@
     @apply w-full sm:w-[90%] mx-auto
   }
 
+  .container-full {
+    @apply w-full sm:w-[90%] mx-auto
+  }
+
   .container-640 {
     @apply w-full sm:w-[640px] mx-auto
   }

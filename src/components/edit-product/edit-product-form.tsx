@@ -47,7 +47,7 @@ const EditProductForm = ({ productId }: { productId: number }) => {
     <form onSubmit={handleSubmit(onSubmit)} method="POST">
       <fieldset
         disabled={!formActive || isSubmitting}
-        className="flex flex-col gap-4"
+        className="flex flex-col gap-4 px-6"
       >
         {formErrorBag ? (
           <FormErrorBag message={formErrorBag} />

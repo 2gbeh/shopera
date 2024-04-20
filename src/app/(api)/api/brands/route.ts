@@ -9,7 +9,7 @@ import { brandCreateDto } from "@/server/requests/brand.dto";
 export async function GET(_: NextRequest) {
   try {
     const collection = await prismaClient.brand.findMany(
-      CommonService.getAll()
+      BrandService.getAll_nameAsc()
     );
     //
     return prismaUtils.response(collection);
