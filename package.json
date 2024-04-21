@@ -2,32 +2,19 @@
   "name": "shopera",
   "version": "0.1.0",
   "private": true,
-  "name": "cardio-api",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Quality Car Repairs & Services",
+  "description": "Peddle Technologies - Full-Stack Developer Assessment",
   "keywords": [
-    "mycardio.io",
-    "cardio",
-    "cardio llc",
-    "cardio fix",
-    "cardio quality",
-    "quality car repairs",
-    "quality car services",
-    "extended car lifespan",
-    "save cost on repairs",
-    "improved car safety",
-    "quality assurance",
-    "speed of delivery",
-    "automated diagnosis",
-    "full-service maintenance",
-    "trustworthy expertise",
-    "prompt services by a friendly team"
+    "peddle technologies",
+    "full-stack developer assessment",
+    "grocery list app",
+    "upc-12 barcode",
+    "rest api",
+    "responsive ui"
   ],
   "author": "Tugbeh Emmanuel",
   "repository": {
     "type": "git",
-    "url": "https://github.com/2gbeh/cardio-api.git"
+    "url": "https://github.com/2gbeh/shopera.git"
   },
   "license": "MIT",
   "prisma": {
