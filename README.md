@@ -25,17 +25,9 @@ $ npm run dev
 
 ## Usage
 
-#### Development
+> Development: (client) http://localhost:3000/ (server) http://localhost:3000/api/
 
-Web: http://localhost:3000/
-
-API: http://localhost:3000/api/
-
-#### Production
-
-Web: http://shopera.vercel.app
-
-API: http://shopera.vercel.app/api/
+> Production: (client) http://shopera.vercel.app/ (server) http://shopera.vercel.app/api/
 
 ## API Documentation
 
@@ -54,15 +46,19 @@ API: http://shopera.vercel.app/api/
 
 > #### [Brands Resource](<./src/app/(api)/api/brands>)
 
-|  Method | Endpoint                       | Query | Body | Summary               |
-| ------: | :----------------------------- | :---: | :--: | :-------------------- |
-|     GET | /brands                        |       |      | all (ASC order)       |
-|     GET | /brands/[:brand_id]            |       |      | one                   |
-|    POST | /brands                        |       |  x   | add                   |
-|   PATCH | /brands/[:brand_id]            |       |  x   | update                |
-|     PUT | /brands/[:brand_id]            |       |  x   | replace               |
-|  DELETE | /brands/[:brand_id]            |       |      | soft delete (trash)   |
-| ^DELETE | /brands/[:brand_id]/?undo=true |   x   |      | undo delete (restore) |
+|  Method | Endpoint                      | Query | Body | Summary               |
+| ------: | :---------------------------- | :---: | :--: | :-------------------- |
+|     GET | /brands                       |       |      | all (ASC order)       |
+|     GET | /brands/[:brand_id]           |       |      | one                   |
+|    POST | /brands                       |       |  x   | add                   |
+|   PATCH | /brands/[:brand_id]           |       |  x   | update                |
+|     PUT | /brands/[:brand_id]           |       |  x   | replace               |
+|  DELETE | /brands/[:brand_id]           |       |      | soft delete (trash)   |
+| ^DELETE | /brands/{brand_id}/?undo=true |   x   |      | undo delete (restore) |
+
+## Stack Documentation
+
+![Screenshot](./public/tech-stack.png)
 
 ## Screenshots
 
@@ -81,3 +77,7 @@ API: http://shopera.vercel.app/api/
 #### Page 2 - Mobile (Edit Product Listing)
 
 ![Screenshot](./public/ui/page-2-mobile.png)
+
+## Known Issues
+
+Added the `.env` file to .gitignore but it did not exclude it, I think it is related to Prisma ORM (not sure).

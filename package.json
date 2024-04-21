@@ -2,6 +2,34 @@
   "name": "shopera",
   "version": "0.1.0",
   "private": true,
+  "name": "cardio-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Quality Car Repairs & Services",
+  "keywords": [
+    "mycardio.io",
+    "cardio",
+    "cardio llc",
+    "cardio fix",
+    "cardio quality",
+    "quality car repairs",
+    "quality car services",
+    "extended car lifespan",
+    "save cost on repairs",
+    "improved car safety",
+    "quality assurance",
+    "speed of delivery",
+    "automated diagnosis",
+    "full-service maintenance",
+    "trustworthy expertise",
+    "prompt services by a friendly team"
+  ],
+  "author": "Tugbeh Emmanuel",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/2gbeh/cardio-api.git"
+  },
+  "license": "MIT",
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
@@ -20,7 +48,6 @@
     "@tailwindcss/forms": "^0.5.7",
     "@types/react-html-parser": "^2.0.6",
     "@types/uuid": "^9.0.8",
-    "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "html-react-parser": "^5.1.10",
