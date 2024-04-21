@@ -36,27 +36,27 @@ $ npm run dev
 |  Method | Endpoint                           | Query | Body | Summary                            |
 | ------: | :--------------------------------- | :---: | :--: | :--------------------------------- |
 |     GET | /products                          |       |      | all (ASC order)                    |
-|     GET | /products/[:product_id]            |       |      | one                                |
-|    ^GET | /products/?like=[:search]          |   x   |      | search (product, brand or barcode) |
+|     GET | /products/[product_id]            |       |      | one                                |
+|    ^GET | /products/?like=[search]          |   x   |      | search (product, brand or barcode) |
 |    POST | /products                          |       |  x   | add                                |
-|   PATCH | /products/[:product_id]            |       |  x   | update                             |
-|     PUT | /products/[:product_id]            |       |  x   | replace                            |
-|  DELETE | /products/[:product_id]            |       |      | soft delete (trash)                |
-| ^DELETE | /products/[:product_id]/?undo=true |   x   |      | undo delete (restore)              |
+|   PATCH | /products/[product_id]            |       |  x   | update                             |
+|     PUT | /products/[product_id]            |       |  x   | replace                            |
+|  DELETE | /products/[product_id]            |       |      | soft delete (trash)                |
+| ^DELETE | /products/[product_id]/?undo=true |   x   |      | undo delete (restore)              |
 
 > #### [Brands Resource](<./src/app/(api)/api/brands>)
 
 |  Method | Endpoint                      | Query | Body | Summary               |
 | ------: | :---------------------------- | :---: | :--: | :-------------------- |
 |     GET | /brands                       |       |      | all (ASC order)       |
-|     GET | /brands/[:brand_id]           |       |      | one                   |
+|     GET | /brands/[brand_id]           |       |      | one                   |
 |    POST | /brands                       |       |  x   | add                   |
-|   PATCH | /brands/[:brand_id]           |       |  x   | update                |
-|     PUT | /brands/[:brand_id]           |       |  x   | replace               |
-|  DELETE | /brands/[:brand_id]           |       |      | soft delete (trash)   |
-| ^DELETE | /brands/{brand_id}/?undo=true |   x   |      | undo delete (restore) |
+|   PATCH | /brands/[brand_id]           |       |  x   | update                |
+|     PUT | /brands/[brand_id]           |       |  x   | replace               |
+|  DELETE | /brands/[brand_id]           |       |      | soft delete (trash)   |
+| ^DELETE | /brands/[brand_id]/?undo=true |   x   |      | undo delete (restore) |
 
-## Stack Documentation
+## Tech Stack Documentation
 
 ![Screenshot](./public/tech-stack.png)
 
