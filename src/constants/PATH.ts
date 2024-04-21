@@ -7,4 +7,5 @@ export default Object.freeze({
   home: "/",
   products: "/",
   edit_product: "/products/%s/edit",
+  create_product: "/products/create",
 });

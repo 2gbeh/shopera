@@ -36,17 +36,17 @@ const EditProductForm = ({ productId }: { productId: number }) => {
     setValue,
     handleSubmit,
     reset,
-    onSubmit,
+    handleEditProduct,
     //
-    formActive,
+    formHydrated,
     formErrorBag,
   } = useEditProduct(productId, showSnackbar);
 
   //
   return (
-    <form onSubmit={handleSubmit(onSubmit)} method="POST">
+    <form onSubmit={handleSubmit(handleEditProduct)} method="POST">
       <fieldset
-        disabled={!formActive || isSubmitting}
+        disabled={!formHydrated || isSubmitting}
         className="flex flex-col gap-4 px-6"
       >
         {formErrorBag ? (

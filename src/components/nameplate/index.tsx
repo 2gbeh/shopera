@@ -6,24 +6,25 @@ import { ImageFallback } from "../image-fallback";
 import useHasInternet from "@/hooks/useHasInternet";
 
 export const Nameplate = () => {
-const hasInternet = useHasInternet();
+  const hasInternet = useHasInternet();
   return (
     <section className="_hidden sm:flex flex-center-end gap-5">
-      <b className="hidden sm:flex text-sm tracking-wider whitespace-nowrap">Hi, Emmanuel</b>
+      <b className="hidden sm:flex text-sm tracking-wider whitespace-nowrap">
+        Hi, Emmanuel
+      </b>
       {/*  */}
       <div className="flex-center  gap-4 border-2 border-400 rounded-full py-2 pl-4 pr-3">
-        <i>
-          <Globe />
-        </i>
+        <a href="https://linkedin.com/in/2gbeh" target="_blank">
+          <i title="LinkedIn">
+            <Globe />
+          </i>
+        </a>
         <a href="https://github.com/2gbeh" target="_blank">
           <div className="relative">
             <ImageFallback
-              as={[
-                "https://github.com/2gbeh.png",
-                "/images/avatar-flat.png",
-              ]}
+              as={["https://github.com/2gbeh.png", "/images/avatar-flat.png"]}
               alt="Account"
-              title="My Account"
+              title="GitHub"
               className="min-w-10 min-h-10 max-w-10 max-h-10 rounded-full"
             />
             <span
