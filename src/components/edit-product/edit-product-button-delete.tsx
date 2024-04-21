@@ -27,13 +27,6 @@ const EditProductButtonDelete = ({ productId }: { productId: number }) => {
           <h1 className="text-brand-dark border-r border-r-gray-300 pr-3">
             Confirm Delete?
           </h1>
-          <i
-            onClick={toggleConfirmDelete}
-            className={clsx(tw.icon, "bg-red-500")}
-            title="Cancel"
-          >
-            <BanIcon size={"20px"} />
-          </i>
           {/*  */}
           <i
             onClick={handleDeleteProduct}
@@ -41,6 +34,14 @@ const EditProductButtonDelete = ({ productId }: { productId: number }) => {
             title="OK"
           >
             <CheckCheck size={"22px"} />
+          </i>
+          {/*  */}
+          <i
+            onClick={toggleConfirmDelete}
+            className={clsx(tw.icon, "bg-red-500")}
+            title="Cancel"
+          >
+            <BanIcon size={"20px"} />
           </i>
         </div>
       ) : (
