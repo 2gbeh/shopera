@@ -67,6 +67,10 @@
     @apply text-[#e11] bg-white hover:bg-[#e11] hover:text-white
   }
 
+  .btn-delete {
+    @apply text-[#0f326c] hover:bg-gray-100 disabled:bg-gray-200
+  }
+
   .border-brand {
     @apply border-[#2370f9]
   }

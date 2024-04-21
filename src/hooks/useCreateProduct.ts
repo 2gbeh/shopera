@@ -15,12 +15,8 @@ import {
 import PATH from "@/constants/PATH";
 import M from "@/constants/MOCK";
 import mockBrands from "@/data/mock-brands";
-import mockProducts from "@/data/mock-products";
 
-export default function useEditProduct(
-  productId: number,
-  showSnackbar: () => void
-) {
+export default function useCreateProduct(showSnackbar: () => void) {
   const router = useRouter();
   const {
     control,
@@ -33,10 +29,9 @@ export default function useEditProduct(
     defaultValues: productFormData_defaultValues,
     resolver: zodResolver(productFormDataDto),
   });
-  const [formHydrated, setFormHydrated] = useState(false);
+  const [formHydrated, setFormHydrated] = useState(true);
   const [formErrorBag, setFormErrorBag] = useState<string | null>(null);
   const [brands, setBrands] = useState<TBrandResponse[] | null>(null);
-  const [product, setProduct] = useState<TProductResponse | null>(null);
   const brandsPipe = useMemo(() => {
     if (brands && brands.length > 0) {
       return brands.map(({ id, name }) => ({
@@ -47,7 +42,7 @@ export default function useEditProduct(
   }, [brands]);
   //
   const goBack = () => router.push(PATH.home);
-  const handleEditProduct: SubmitHandler<TProductFormData> = async (
+  const handleCreateProduct: SubmitHandler<TProductFormData> = async (
     formData
   ) => {
     let body = JSON.stringify({
@@ -55,15 +50,15 @@ export default function useEditProduct(
       brand_id: formData.brand_id?.value,
     });
     // console.log(
-    //   "🚀 ~ consthandleEditProduct:SubmitHandler<TProductFormData>= ~ formData:",
+    //   "🚀 ~ consthandleCreateProduct:SubmitHandler<TProductFormData>= ~ formData:",
     //   formData
     // );
     // console.log(
-    //   "🚀 ~ consthandleEditProduct:SubmitHandler<TProductFormData>= ~ body:",
+    //   "🚀 ~ consthandleCreateProduct:SubmitHandler<TProductFormData>= ~ body:",
     //   body
     // );
-    let raw = await fetch(`/api/products/${productId}`, {
-      method: "PUT",
+    let raw = await fetch(`/api/products`, {
+      method: "POST",
       body,
       headers: {
         "Content-Type": "application/json",
@@ -74,56 +69,28 @@ export default function useEditProduct(
     if (res.success) {
       showSnackbar();
       await zzz();
-      goBack();
+      // goBack();
     } else {
       setFormErrorBag(res.message);
     }
   };
-  async function fetchBrands() {
-    let raw = await fetch("/api/brands");
-    return raw.json();
-  }
-  async function fetchProduct() {
-    let raw = await fetch("/api/products/" + productId);
-    return raw.json();
-  }
   async function mockOnMount() {
     await zzz();
     setBrands(mockBrands.data);
-    setProduct(mockProducts.data[0]);
   }
   async function onMount() {
-    let [brandsResponse, productResponse] = await Promise.all([
-      fetchBrands(),
-      fetchProduct(),
-    ]);
-    //
-    setBrands(brandsResponse.success ? brandsResponse.data : []);
-    setProduct(productResponse.success ? productResponse.data : {});
+    let raw = await fetch("/api/brands");
+    let res = await raw.json();
+    setBrands(res.success ? res.data : []);
   }
   //
   useEffect(() => {
-    M.edit_product ? mockOnMount() : onMount();
+    M.create_product ? mockOnMount() : onMount();
   }, []);
-
-  useEffect(() => {
-    if (product && Object.keys(product).length > 0) {
-      setValue("brand_id", {
-        value: product.brand.id,
-        label: product.brand.name,
-      });
-      setValue("name", product.name);
-      setValue("price", product.price);
-      setValue("barcode", product.barcode);
-      //
-      setFormHydrated(true);
-    }
-  }, [product]);
 
   return {
     goBack,
     brandsPipe,
-    product,
     //
     control,
     errors,
@@ -132,7 +99,7 @@ export default function useEditProduct(
     setValue,
     handleSubmit,
     reset,
-    handleEditProduct,
+    handleCreateProduct,
     //
     formHydrated,
     formErrorBag,
