@@ -1,6 +1,6 @@
-# Shopera
+![Logo](./public/favicon.png)
 
-Peddle Technologies - Full-Stack Developer Assessment
+# Peddle Technologies - Full-Stack Developer Assessment
 
 [![Next.js](https://img.shields.io/badge/Next.js-14.x-111111.svg)](https://nextjs.org/docs)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org/docs/)
@@ -25,22 +25,40 @@ $ npm run dev
 
 ## Usage
 
-#### Development
+> Development: (client) http://localhost:3000/ (server) http://localhost:3000/api/
 
-Web: http://localhost:3000/ 
+> Production: (client) http://shopera.vercel.app/ (server) http://shopera.vercel.app/api/
 
-API: http://localhost:3000/api/
+## API Documentation
 
-#### Production
+> #### [Products Resource](<./src/app/(api)/api/products>)
 
-Web: http://shopera.vercel.app
+|  Method | Endpoint                           | Query | Body | Summary                            |
+| ------: | :--------------------------------- | :---: | :--: | :--------------------------------- |
+|     GET | /products                          |       |      | all (ASC order)                    |
+|     GET | /products/[:product_id]            |       |      | one                                |
+|    ^GET | /products/?like=[:search]          |   x   |      | search (product, brand or barcode) |
+|    POST | /products                          |       |  x   | add                                |
+|   PATCH | /products/[:product_id]            |       |  x   | update                             |
+|     PUT | /products/[:product_id]            |       |  x   | replace                            |
+|  DELETE | /products/[:product_id]            |       |      | soft delete (trash)                |
+| ^DELETE | /products/[:product_id]/?undo=true |   x   |      | undo delete (restore)              |
 
-API: http://shopera.vercel.app/api/
+> #### [Brands Resource](<./src/app/(api)/api/brands>)
 
+|  Method | Endpoint                      | Query | Body | Summary               |
+| ------: | :---------------------------- | :---: | :--: | :-------------------- |
+|     GET | /brands                       |       |      | all (ASC order)       |
+|     GET | /brands/[:brand_id]           |       |      | one                   |
+|    POST | /brands                       |       |  x   | add                   |
+|   PATCH | /brands/[:brand_id]           |       |  x   | update                |
+|     PUT | /brands/[:brand_id]           |       |  x   | replace               |
+|  DELETE | /brands/[:brand_id]           |       |      | soft delete (trash)   |
+| ^DELETE | /brands/{brand_id}/?undo=true |   x   |      | undo delete (restore) |
 
-## Documentation
+## Stack Documentation
 
-(coming soon)
+![Screenshot](./public/tech-stack.png)
 
 ## Screenshots
 
@@ -59,3 +77,7 @@ API: http://shopera.vercel.app/api/
 #### Page 2 - Mobile (Edit Product Listing)
 
 ![Screenshot](./public/ui/page-2-mobile.png)
+
+## Known Issues
+
+Added the `.env` file to .gitignore but it did not exclude it, I think it is related to Prisma ORM (not sure).

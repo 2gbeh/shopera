@@ -2,6 +2,21 @@
   "name": "shopera",
   "version": "0.1.0",
   "private": true,
+  "description": "Peddle Technologies - Full-Stack Developer Assessment",
+  "keywords": [
+    "peddle technologies",
+    "full-stack developer assessment",
+    "grocery list app",
+    "upc-12 barcode",
+    "rest api",
+    "responsive ui"
+  ],
+  "author": "Tugbeh Emmanuel",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/2gbeh/shopera.git"
+  },
+  "license": "MIT",
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
@@ -20,7 +35,6 @@
     "@tailwindcss/forms": "^0.5.7",
     "@types/react-html-parser": "^2.0.6",
     "@types/uuid": "^9.0.8",
-    "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "html-react-parser": "^5.1.10",
