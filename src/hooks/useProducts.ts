@@ -6,6 +6,7 @@ import {
   TProductEntity_withBrand,
 } from "@/server/entities/product.entity";
 //
+import { PAGINATION } from "@/constants/APP";
 import M from "@/constants/MOCK";
 import mockProducts from "@/data/mock-products";
 import PATH from "@/constants/PATH";
@@ -14,7 +15,7 @@ export default function useProducts() {
   const router = useRouter();
   // const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [perPage, setPerPage] = useState(10);
+  const [perPage, setPerPage] = useState(PAGINATION);
   const [sortProductDesc, setSortProductDesc] = useState(false);
   const [sortBrandDesc, setSortBrandDesc] = useState(false);
   const [products, setProducts] = useState<TProductResponse[] | null>(null);

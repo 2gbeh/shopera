@@ -23,6 +23,8 @@ export default function useCreateProduct(showSnackbar: () => void) {
     formState: { errors, isSubmitting },
     register,
     setValue,
+    setError,
+    clearErrors,
     handleSubmit,
     reset,
   } = useForm({
@@ -45,6 +47,15 @@ export default function useCreateProduct(showSnackbar: () => void) {
   const handleCreateProduct: SubmitHandler<TProductFormData> = async (
     formData
   ) => {
+    if (formData.brand_id.value < 1) {
+      setError("brand_id", {
+        type: "custom",
+        message: "Brand must be selected",
+      });
+      return
+    } else {
+      clearErrors();
+    }
     let body = JSON.stringify({
       ...formData,
       brand_id: formData.brand_id?.value,
@@ -69,7 +80,7 @@ export default function useCreateProduct(showSnackbar: () => void) {
     if (res.success) {
       showSnackbar();
       await zzz();
-      // goBack();
+      reset();
     } else {
       setFormErrorBag(res.message);
     }
