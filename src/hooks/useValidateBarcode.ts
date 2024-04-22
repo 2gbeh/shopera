@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { zzz } from "@/utils";
 
 export default function useValidateBarcode() {
-  const [barcode, setBarcode] = useState("85626000279333");
+  const [barcode, setBarcode] = useState("");
   const [validated, setValidated] = useState<-1 | 0 | 1>(-1);
   const [validating, setValidating] = useState(false);
   //
