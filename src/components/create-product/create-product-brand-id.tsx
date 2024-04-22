@@ -56,7 +56,8 @@ const CreateProductBrandId = ({
         {/*  */}
         {errors?.[key] && (
           <p className="text-sm text-red-500 block pt-1 px-1">
-            A Brand must be selected
+            {/* A Brand must be selected */}
+            {errors[key].message}
           </p>
         )}
       </div>

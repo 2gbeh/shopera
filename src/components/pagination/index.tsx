@@ -2,6 +2,7 @@
 
 import { Dispatch, SetStateAction, useState } from "react";
 import { FormButton } from "../form/form-button";
+import { PAGINATION } from "@/constants/APP";
 import { zzz } from "@/utils";
 //
 import { TProductResponse } from "@/server/entities/product.entity";
@@ -19,7 +20,7 @@ export const Pagination = ({
   async function handleClick() {
     setLoading(true);
     await zzz();
-    setPerPage((prev) => prev + 10);
+    setPerPage((prev) => prev + PAGINATION);
     setLoading(false);
   }
   //

@@ -11,6 +11,9 @@ export default Object.freeze({
   owner: "HWP Labs",
   version: "1.1.0",
   build: "WE20240417T010000",
+
 });
 
 export const COLOR = Object.freeze({ brand: "#2370f9", accent: "#0f326c" });
+
+export const PAGINATION = 20

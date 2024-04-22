@@ -41,7 +41,7 @@ export const ValidateBarcodeForm = () => {
         <form className="w-full">
           <fieldset disabled={validating} className="flex gap-2">
             <Input
-              type="text"
+              type="search"
               placeholder="Ex. 1-2345678901-2"
               onChange={handleChange}
               value={barcode}
